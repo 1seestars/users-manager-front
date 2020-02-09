@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.formWrapper {
+  width: 600px;
+  min-height: 600px;
+  box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75);
+  margin: 80px auto;
+  text-align: center;
+  padding: 1% 0 1%;
+  border-radius: 7px;
+}
+
+.dataInputs {
+  width: 100%;
+  min-height: 516px;
+}
+
+.formInput {
+  margin-top: 10px;
+}
+
+.manipulateButtons {
+  display: inline-block;
+  margin: 10px 2%;
+}
+
+.errorSpan {
+  display: inline-block;
+  width: 450px;
+  text-align: left;
+  color: rgb(238, 0, 0);
+  font-size: 15px;
+}
+
+.workNumberError {
+  width: 90%;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: left;
+  margin: 40px auto;
+  background: #ffe5e2;
+  color: #540800;
+  border-radius: 7px;
+}
+
+.emptyUsersListAlert {
+  width: 80%;
+  height: 100px;
+  font-size: 20px;
+  line-height: 100px;
+  text-align: left;
+  margin: 100px auto;
+  background: #ffecb3;
+  color: #540800;
+  border-radius: 7px;
+}
+
+.activityList {
+  list-style: none;
+  display: inline;
+}
+
+.workInfoHeader{
+  display: flex;
+  margin: 0 72px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.removeButton {
+  position: relative;
+  top: 20px;
+}
+
+.sexChoose {
+  display: flex;
+  margin: 0 150px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.removeUserButton {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  border: none;
+  background: #ff3a30;
+  outline: none;
+}
+
+.removeUserButton span {
+  visibility: hidden;
+}
+
+.removeUserButton:hover span {
+  visibility: visible;
+}
+
+.removeAllItemsButton {
+  border: none; 
+  background: white;
+  color: #5b84d6;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 40px 4.7% 0;
+  outline: none;
+}
+
+.removeAllItemsButton:hover {
+  text-decoration: underline;
+}
