@@ -1,3 +1,4 @@
+import { apiCall } from '../../utils/backendApi'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const REMOVE_ALL_ITEMS = 'REMOVE_ALL_ITEMS'
 export const SET_USERS = 'SET_USERS'
@@ -10,23 +11,35 @@ export const setUsers = data => ({ type: SET_USERS, payload: data })
 export const setLoading = value => ({ type: SET_LOADING, payload: value })
 export const setError = message => ({ type: SET_ERROR, payload: message })
 
-export const fetchUsers = (url = 'http://localhost:4000/users', method = 'GET', values = null) => async dispatch => {
+export const fetchUsers = () => async dispatch => {
     try {
-        const response = await fetch(url, {
-            method: method,
-            body: JSON.stringify(values)
-        })
-        const data = await response.json()
-        if(!data.message) {
-            dispatch(setUsers(data))
-        }
+        dispatch(setLoading(true))
+        const data = await apiCall('users', 'GET')
+        dispatch(setUsers(data))
     } catch (e) {
-        dispatch(setError(e.message))
+        dispatch(setError('Failed to load user list'))
     } finally {
         dispatch(setLoading(false))
     }
 }
 
-// http://localhost:4000/user POST {"firstName":"jhbhjbjhb","lastName":"jhbjhb","email":"hjbjhb@jhbjhbec.cc","gender":"male","birthday":"2000/01/20","password":"pass12","passwordConfirmation":"pass12","workplaces":[{"enterprise":"gbjhbjhb","position":"jbhjhhj","years":"2005-2007"}]}
+export const postUser = body => async dispatch => {
+    try {
+        dispatch(setLoading(true))
+        await apiCall('user', 'POST', body)
+    } catch (e) {
+        dispatch(setError('Something went wrong :-('))
+    } finally {
+        dispatch(setLoading(false))
+    }
+}
 
-// http://localhost:4000/user POST {"firstName":"jhbjhbjhb","lastName":"jhbjhbj","email":"bjhbjhb@JHbhjb.cc","gender":"male","birthday":"2000/01/20","password":"pass12","passwordConfirmation":"pass12","workplaces":[{"enterprise":"hbkjbhkb","position":"jhbjhb","years":"2005-2007"}]} 
+export const deleteUsers = route => async dispatch => {
+    try {
+        apiCall(route, 'DELETE')
+        const data = await apiCall('users', 'GET')
+        dispatch(setUsers(data))
+    } catch (e) {
+        dispatch(setError(e.message))
+    } 
+}

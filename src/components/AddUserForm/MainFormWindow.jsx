@@ -1,7 +1,7 @@
 import React from 'react'
 import AddUserComponentFirstPage from './FirstPageWindow'
 import AddUserComponentSecondPage from './SecondPageWindow'
-import { fetchUsers } from '../../store/adminPanel/actions'
+import { fetchUsers, postUser } from '../../store/adminPanel/actions'
 import { connect } from 'react-redux'
 import FinalPage from './FinalPageWindow'
 
@@ -10,8 +10,6 @@ class MainFormWindow extends React.Component{
         super(props)
         this.state ={
             page: 1,
-            isLoading: false,
-            message: "New user added!"
         }
     }
 
@@ -27,8 +25,8 @@ class MainFormWindow extends React.Component{
         this.setState({ page: 1 })
     }
 
-    onSubmit = values => {
-        this.props.fetchUsers('http://localhost:4000/user', 'POST', values)
+    onSubmit = body => {
+        this.props.postUser(body)
         this.nextPage()
     }
 
@@ -38,14 +36,15 @@ class MainFormWindow extends React.Component{
             <div>
                 {page === 1 && <AddUserComponentFirstPage onSubmit={this.nextPage} />}
                 {page === 2 && <AddUserComponentSecondPage previousPage={this.previousPage} onSubmit={values => this.onSubmit(values)} />}
-                {page === 3 && <FinalPage isLoading={this.state.isLoading} message={this.state.message} pageReset={this.pageReset} />}
+                {page === 3 && <FinalPage pageReset={this.pageReset} />}
             </div>
         )
     }
 }
 
 const mapDispatchToProps = {
-    fetchUsers
+    fetchUsers,
+    postUser
 }
 
 export default connect(null, mapDispatchToProps)(MainFormWindow)
