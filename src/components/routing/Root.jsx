@@ -5,7 +5,7 @@ import { BrowserRouter as Router, /*Route*/ } from 'react-router-dom'
 import DateFnsUtils from '@date-io/date-fns';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import NavTabs from '../NavBar'
+import NavTabs from './NavBar'
 
 const Root = ({ store }) => (
     <MuiThemeProvider>

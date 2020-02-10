@@ -1,8 +1,8 @@
 import React from "react";
 import { Tabs, Tab } from 'material-ui';
 import { withRouter } from "react-router-dom";
-import MainFormWindow from './AddUserForm/MainFormWindow'
-import AdminPanel from './AdminPanel/AdminPanel'
+import MainFormWindow from '../AddUserForm/MainFormWindow'
+import AdminPanel from '../AdminPanel/AdminPanel'
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';

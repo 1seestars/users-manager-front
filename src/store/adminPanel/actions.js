@@ -12,17 +12,13 @@ export const setError = message => ({ type: SET_ERROR, payload: message })
 
 export const fetchUsers = (url = 'http://localhost:4000/users', method = 'GET', values = null) => async dispatch => {
     try {
-        console.log(typeof url, typeof method)
         const response = await fetch(url, {
             method: method,
             body: JSON.stringify(values)
         })
         const data = await response.json()
         if(!data.message) {
-            console.log(data)
             dispatch(setUsers(data))
-        } else {
-            console.log(data.message)
         }
     } catch (e) {
         dispatch(setError(e.message))
