@@ -23,22 +23,30 @@ export const fetchUsers = () => async dispatch => {
     }
 }
 
-export const postUser = body => async dispatch => {
+export const addUser = body => async dispatch => {
     try {
         dispatch(setLoading(true))
         await apiCall('user', 'POST', body)
     } catch (e) {
-        dispatch(setError('Something went wrong :-('))
+        dispatch(setError('Error: something went wrong :-('))
     } finally {
         dispatch(setLoading(false))
     }
 }
 
-export const deleteUsers = route => async dispatch => {
+export const deleteUser = route => async dispatch => {
     try {
-        apiCall(route, 'DELETE')
-        const data = await apiCall('users', 'GET')
-        dispatch(setUsers(data))
+        await apiCall(route, 'DELETE')
+        dispatch(setUsers(await apiCall('users', 'GET')))
+    } catch (e) {
+        dispatch(setError(e.message))
+    } 
+}
+
+export const deleteAllUsers = () => async dispatch => {
+    try {
+        await apiCall('users', 'DELETE')
+        dispatch(setUsers(await apiCall('users', 'GET')))
     } catch (e) {
         dispatch(setError(e.message))
     } 

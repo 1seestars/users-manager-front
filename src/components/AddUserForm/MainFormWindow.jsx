@@ -1,17 +1,15 @@
 import React from 'react'
 import AddUserComponentFirstPage from './FirstPageWindow'
 import AddUserComponentSecondPage from './SecondPageWindow'
-import { fetchUsers, postUser } from '../../store/adminPanel/actions'
+import { fetchUsers, addUser } from '../../store/adminPanel/actions'
 import { connect } from 'react-redux'
 import FinalPage from './FinalPageWindow'
 
 class MainFormWindow extends React.Component{
-    constructor(props){
-        super(props)
-        this.state ={
-            page: 1,
-        }
+    state = {
+        page: 1
     }
+    
 
     nextPage = () => {
         this.setState({ page: this.state.page + 1 })
@@ -26,7 +24,7 @@ class MainFormWindow extends React.Component{
     }
 
     onSubmit = body => {
-        this.props.postUser(body)
+        this.props.addUser(body)
         this.nextPage()
     }
 
@@ -44,7 +42,7 @@ class MainFormWindow extends React.Component{
 
 const mapDispatchToProps = {
     fetchUsers,
-    postUser
+    addUser
 }
 
 export default connect(null, mapDispatchToProps)(MainFormWindow)

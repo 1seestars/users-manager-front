@@ -1,11 +1,11 @@
-import React from "react";
-import { Tabs, Tab } from 'material-ui';
-import { withRouter } from "react-router-dom";
+import React from "react"
+import { Tabs, Tab } from 'material-ui'
+import { withRouter } from "react-router-dom"
 import MainFormWindow from '../AddUserForm/MainFormWindow'
 import AdminPanel from '../AdminPanel/AdminPanel'
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import AppBar from '@material-ui/core/AppBar'
 
 class NavTabs extends React.Component {
     state = {
@@ -47,8 +47,7 @@ class NavTabs extends React.Component {
     }
 }
 
-function TabPanel(props) {
-    const { children, value, index, ...other } = props
+const TabPanel = ({ children, value, index, ...other }) => {
     return (
         <Typography
             component="div"

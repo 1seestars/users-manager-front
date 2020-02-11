@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { createStore, applyMiddleware } from 'redux';
-import { rootReducer } from './store/reducers';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import { createStore, applyMiddleware } from 'redux'
+import { rootReducer } from './store/reducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import Root from './components/routing/Root'
 import thunk from 'redux-thunk'

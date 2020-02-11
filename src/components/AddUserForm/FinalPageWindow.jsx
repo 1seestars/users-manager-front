@@ -1,9 +1,9 @@
 import React from 'react'
 import { CircularProgress } from 'material-ui'
 import { Button } from '@material-ui/core'
-import { reduxForm } from 'redux-form';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
 const FinalPage = ({ isLoading, networkError, pageReset }) => {
     return (
@@ -12,7 +12,7 @@ const FinalPage = ({ isLoading, networkError, pageReset }) => {
                 <CircularProgress color='#3f51b5' style={{ margin: '200px' }} /> : 
                 <div>
                     <div>
-                        <h2 className='formSubmitMessege' style={{ margin: '100px' }}>{networkError ? networkError : 'New users added!'}</h2>
+                        <h2 className='formSubmitMessege' style={{ margin: '100px' }}>{networkError ? networkError : 'New user added!'}</h2>
                     </div>
                     <div>
                         <Button 
@@ -28,10 +28,10 @@ const FinalPage = ({ isLoading, networkError, pageReset }) => {
     )
 }
 
-const mapStateToProps = state => (
+const mapStateToProps = ({ userList: { isLoading, networkError } }) => (
     {
-        isLoading: state.addUserPage.isLoading,
-        networkError: state.addUserPage.networkError
+        isLoading,
+        networkError
     }
 ) 
 
