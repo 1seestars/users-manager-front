@@ -9,14 +9,14 @@ import { CircularProgress } from 'material-ui'
 import { fetchUsers, deleteUser, deleteAllUsers } from '../../store/adminPanel/actions'
 
 class AdminPanel extends React.Component {
-    state = { expanded: false }
+    state = { isExpanded: false }
 
     componentDidMount() {
         this.props.fetchUsers()
     }
 
     handleChange = id => {
-        this.setState(this.state.expanded === id ? { expanded: false } : { expanded: id })
+        this.setState(state => (state.isExpanded === id ? { isExpanded: false } : { isExpanded: id }))
     }
 
     renderList = () => {
@@ -38,7 +38,7 @@ class AdminPanel extends React.Component {
                         </button>
                         {users.map((user, index) => (
                             <div>
-                                <ExpansionPanel style={{ width: '90%', margin: '30px auto' }} expanded={this.state.expanded === user.id}>
+                                <ExpansionPanel style={{ width: '90%', margin: '30px auto' }} expanded={this.state.isExpanded === user.id}>
                                     <ExpansionPanelSummary
                                         aria-controls="panel1bh-content"
                                         id="panel1bh-header"
